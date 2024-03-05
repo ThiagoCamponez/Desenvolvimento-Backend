@@ -1,11 +1,11 @@
 import conectar from "./Conexao.js";
-import Cliente from "../Modelos/Cliente.js";
+import Eventos from "../Modelo/Eventos.js";
 
 //Client Access Object  --- É a camada que se conecta com o Banco de Dados
 
 export default class ClienteDAO{
     async gravar(evento){
-        if(evento instanceof Evento){
+        if(evento instanceof Eventos){
             const conexao = await conectar();
             const sql = `INSERT INTO evento (nome_evento, nome_artista, valores_ingresso, cidade_uf, endereco_evento, dia, mes, ano)
                          values (?, ?, ?, ?, ?, ?, ?, ?)`;
@@ -25,7 +25,7 @@ export default class ClienteDAO{
     }
 
         async atualizar(evento){
-        if (evento instanceof Evento){
+        if (evento instanceof Eventos){
             const conexao = await conectar();
             const sql = `UPDATE evento SET nome_evento = ?, nome_artista = ?, valores_ingresso = ?, cidade_uf = ?, endereco_evento = ?, dia = ?, mes = ?, ano = ? WHERE id = ?`;
             const parametros = [
@@ -45,7 +45,7 @@ export default class ClienteDAO{
     }
 
     async excluir(evento){
-        if(evento instanceof Evento){
+        if(evento instanceof Eventos){
             const conexao = await conectar();
             const sql = `DELETE FROM evento WHERE id = ?`;
             const parametros = [
