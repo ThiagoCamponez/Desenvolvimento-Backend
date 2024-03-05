@@ -1,0 +1,28 @@
+{
+  "name": "desenvolvimento-backend",
+  "version": "1.0.0",
+  "description": "Desenvolvimento do backend para o sistema de vendas de ingressos online (evento)",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ThiagoCamponez/Desenvolvimento-Backend.git"
+  },
+  "keywords": [
+    "backend",
+    "ingressos",
+    "online",
+    "nodejs",
+    "desenvolvimento"
+  ],
+  "author": "Thiago Henrique dos Santos Camponêz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ThiagoCamponez/Desenvolvimento-Backend/issues"
+  },
+  "homepage": "https://github.com/ThiagoCamponez/Desenvolvimento-Backend#readme"
+}
