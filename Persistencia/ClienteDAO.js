@@ -63,30 +63,30 @@ export default class ClienteDAO{
 
         let sql="";
         if(isNaN(termoDePesquisa)){//Termo de pesquisa não é um número
-            sql = `SELECT * FROM cliente WHERE nome LIKE ?`;
+            sql = `SELECT * FROM evento WHERE nome LIKE ?`;
             termoDePesquisa = '%' + termoDePesquisa + '%';
         }
         else{
-            sql = `SELECT * FROM cliente WHERE id = ?`;
+            sql = `SELECT * FROM evento WHERE id = ?`;
         }
         const conexao = await conectar();
         const [registros] = await conexao.execute(sql, [termoDePesquisa]);
-        //Utilizar os registros encontrados para criar novos objetos do tipo cliente
-        let listaClientes = [];
+        //Utilizar os registros encontrados para criar novos objetos do tipo evento
+        let lista_eventos = [];
         for (const registro of registros){
-            const cliente = new Cliente(
+            const evento = new Evento(
                 registro.id,
-                registro.cpf,
-                registro.nome,
-                registro.endereco,
-                registro.bairro,
-                registro.cidade, 
-                registro.estado,
-                registro.telefone,
-                registro.email
+                registro.nome_evento,
+                registro.nome_artista,
+                registro.valores_ingresso,
+                registro.cidade_uf,
+                registro.endereco_evento,
+                registro.dia,
+                registro.mes,
+                registro.ano
             );
-            listaClientes.push(cliente);
+            lista_eventos.push(evento);
         }
-        return listaClientes;
+        return lista_eventos;
     }
 }
