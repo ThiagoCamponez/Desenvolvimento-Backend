@@ -1,8 +1,8 @@
-import ClienteDAO from "../Persistencia/ClienteDAO";
+import ClienteDAO from "../Persistencia/ClienteDAO.js";
 
 export default class Eventos{
     
-    #codigo;
+    #id;
     #nome_evento;
     #nome_artista;
     #valores_ingresso;
@@ -12,8 +12,8 @@ export default class Eventos{
     #mes;
     #ano;
 
-    constructor(codigo = 0, nome_evento = "", nome_artista = "", valores_ingresso = "", cidade_uf = "", endereco_evento = "", dia = "", mes = "", ano = ""){
-        this.#codigo = codigo;
+    constructor(id = 0, nome_evento = "", nome_artista = "", valores_ingresso = "", cidade_uf = "", endereco_evento = "", dia = "", mes = "", ano = ""){
+        this.#id = id;
         this.#nome_evento = nome_evento;
         this.#nome_artista = nome_artista;
         this.#valores_ingresso = valores_ingresso;
@@ -25,11 +25,11 @@ export default class Eventos{
     }
 
     get codigo(){
-        return this.#codigo;
+        return this.#id;
     }
 
     set codigo(novoCodigo){
-        this.#codigo = novoCodigo;
+        this.#id = novoCodigo;
     }
 
 
@@ -119,13 +119,13 @@ export default class Eventos{
     }
 
     toString(){
-        return `Evento código: ${this.#codigo} - nome: ${this.#nome_evento}`;
+        return `Evento código: ${this.#id} - nome: ${this.#nome_evento}`;
     }
 
 
     toJSON(){
         return {
-            "codigo": this.#codigo,
+            "codigo": this.#id,
             "nome_evento": this.#nome_evento,
             "nome_artista": this.#nome_artista,
             "valores_ingresso": this.#valores_ingresso,

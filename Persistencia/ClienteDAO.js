@@ -4,52 +4,52 @@ import Eventos from "../Modelo/Eventos.js";
 //Client Access Object  --- É a camada que se conecta com o Banco de Dados
 
 export default class ClienteDAO{
-    async gravar(evento){
-        if(evento instanceof Eventos){
+    async gravar(eventos){
+        if(eventos instanceof Eventos){
             const conexao = await conectar();
-            const sql = `INSERT INTO evento (nome_evento, nome_artista, valores_ingresso, cidade_uf, endereco_evento, dia, mes, ano)
+            const sql = `INSERT INTO eventos (nome_evento, nome_artista, valores_ingresso, cidade_uf, endereco_evento, dia, mes, ano)
                          values (?, ?, ?, ?, ?, ?, ?, ?)`;
             const parametros = [
-                evento.nome_evento,
-                evento.nome_artista,
-                evento.valores_ingresso,
-                evento.cidade_uf,
-                evento.endereco_evento,
-                evento.dia,
-                evento.mes,
-                evento.ano
+                eventos.nome_evento,
+                eventos.nome_artista,
+                eventos.valores_ingresso,
+                eventos.cidade_uf,
+                eventos.endereco_evento,
+                eventos.dia,
+                eventos.mes,
+                eventos.ano
             ];
             const [resultados, campos] = await conexao.execute(sql, parametros);
-            evento.codigo = resultados.insertId; //Recupera o ID gerado pelo banco de dados
+            eventos.codigo = resultados.insertId; //Recupera o ID gerado pelo banco de dados
         }
     }
 
-        async atualizar(evento){
-        if (evento instanceof Eventos){
+        async atualizar(eventos){
+        if (eventos instanceof Eventos){
             const conexao = await conectar();
-            const sql = `UPDATE evento SET nome_evento = ?, nome_artista = ?, valores_ingresso = ?, cidade_uf = ?, endereco_evento = ?, dia = ?, mes = ?, ano = ? WHERE id = ?`;
+            const sql = `UPDATE eventos SET nome_evento = ?, nome_artista = ?, valores_ingresso = ?, cidade_uf = ?, endereco_evento = ?, dia = ?, mes = ?, ano = ? WHERE id = ?`;
             const parametros = [
-                evento.nome_evento,
-                evento.nome_artista,
-                evento.valores_ingresso,
-                evento.cidade_uf,
-                evento.endereco_evento,
-                evento.dia,
-                evento.mes,
-                evento.ano,
-                evento.codigo
+                eventos.nome_evento,
+                eventos.nome_artista,
+                eventos.valores_ingresso,
+                eventos.cidade_uf,
+                eventos.endereco_evento,
+                eventos.dia,
+                eventos.mes,
+                eventos.ano,
+                eventos.codigo
             ];
 
             await conexao.execute(sql,parametros);
         }
     }
 
-    async excluir(evento){
-        if(evento instanceof Eventos){
+    async excluir(eventos){
+        if(eventos instanceof Eventos){
             const conexao = await conectar();
-            const sql = `DELETE FROM evento WHERE id = ?`;
+            const sql = `DELETE FROM eventos WHERE id = ?`;
             const parametros = [
-                evento.codigo
+                eventos.codigo
             ];
             await conexao.execute(sql,parametros);
         }
