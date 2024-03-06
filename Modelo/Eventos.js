@@ -1,4 +1,4 @@
-import ClienteDAO from "../Persistencia/ClienteDAO.js";
+import EventosDAO from "../Persistencia/EventosDAO.js";
 
 export default class Eventos{
     
@@ -99,22 +99,22 @@ export default class Eventos{
 
 
     async gravar(){
-        const dao = new ClienteDAO();
+        const dao = new EventosDAO();
         await dao.gravar(this);
     }
 
     async atualizar(){
-        const dao = new ClienteDAO();
+        const dao = new EventosDAO();
         await dao.atualizar(this);
     }
 
     async excluir(){
-        const dao = new ClienteDAO();
+        const dao = new EventosDAO();
         await dao.excluir(this);
     }
 
     consultar(termoDePesquisa){
-        const dao = new ClienteDAO();
+        const dao = new EventosDAO();
         return dao.consultar(termoDePesquisa);
     }
 

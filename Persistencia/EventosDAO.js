@@ -3,7 +3,7 @@ import Eventos from "../Modelo/Eventos.js";
 
 //Client Access Object  --- É a camada que se conecta com o Banco de Dados
 
-export default class ClienteDAO{
+export default class EventosDAO{
     async gravar(eventos){
         if(eventos instanceof Eventos){
             const conexao = await conectar();
@@ -63,18 +63,18 @@ export default class ClienteDAO{
 
         let sql="";
         if(isNaN(termoDePesquisa)){//Termo de pesquisa não é um número
-            sql = `SELECT * FROM evento WHERE nome LIKE ?`;
+            sql = `SELECT * FROM eventos WHERE nome LIKE ?`;
             termoDePesquisa = '%' + termoDePesquisa + '%';
         }
         else{
-            sql = `SELECT * FROM evento WHERE id = ?`;
+            sql = `SELECT * FROM eventos WHERE id = ?`;
         }
         const conexao = await conectar();
         const [registros] = await conexao.execute(sql, [termoDePesquisa]);
         //Utilizar os registros encontrados para criar novos objetos do tipo evento
         let lista_eventos = [];
         for (const registro of registros){
-            const evento = new Evento(
+            const evento = new Eventos(
                 registro.id,
                 registro.nome_evento,
                 registro.nome_artista,

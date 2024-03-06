@@ -10,7 +10,7 @@ export default async function conectar(){
             user: 'root', 
             password: '',
             port: 3308,
-            database: 'thiago',
+            database: 'desenvolvimentobackend',
             waitForConnections: true,
             connectionLimit: 10,
             maxIdle: 10, 
