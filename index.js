@@ -13,8 +13,8 @@ const eventos = new Eventos(4);
     console.log('Evento Atualizado!');
 }).catch( (erro) => {
     console.log(erro.message);
-});
-*/
+});*/
+
 
 /*eventos.excluir().then(() =>{
     console.log('Evento excluído!');
@@ -22,9 +22,9 @@ const eventos = new Eventos(4);
     console.log(erro);
 });*/
 
-const eventoQQ = new Eventos();
+const eventoQQ = new Eventos(1);
 
-eventoQQ.consultar(2).then((lista_eventos) => {
+eventoQQ.consultar(1).then((lista_eventos) => {
     console.log("Eventos encontrados:")
     for (const evento of lista_eventos) {
         console.log(evento.toJSON());
